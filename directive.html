@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" ng-app="directApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./angular/angular.js"></script>
+    <script src="directAng.js"></script>
+
+</head>
+<body >
+
+<div class="container" ng-controller="directCtrl">
+    <h3 class="panel-headers">
+        Items
+    </h3>
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--ng-repeat STANDART-->
+    <!--<table class="table">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>Name</th>-->
+                <!--<th>Value</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <!--<tr ng-repeat="item in items">-->
+                <!--<td>{{item.name}}</td>-->
+                <!--<td>{{item.value}}</td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+
+
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--ng-repeat для случая перебора всех значений одного элемента из массива-->
+    <!--<p ng-repeat="item in items">-->
+        <!--<span ng-repeat="property in item">{{property}}</span>-->
+    <!--</p>-->
+
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--Позволяет определить порядковый номер элемента и получаем доступы к ключу и значению обьекта-->
+    <!--<p ng-repeat="item in items">-->
+        <!--<span>{{$index + 1}}</span>-->
+        <!--<span ng-repeat="(key, value) in item">{{key}} = {{value}}, </span>-->
+    <!--</p>-->
+
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--Служебные переменные $even $odd $first $last-->
+    <!--<table class="table">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>#</th>-->
+                <!--<th>Name</th>-->
+                <!--<th>Value</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--&lt;!&ndash;Переменные $even и $odd&ndash;&gt;-->
+        <!--&lt;!&ndash;Они служат для того чтоб понимать какая итерация репида четная или нет&ndash;&gt;-->
+            <!--<tr ng-repeat="item in items" ng-class="$odd ? 'class1' : 'class2' ">-->
+                <!--<td>{{$index+1}}-->
+                    <!--<span ng-if="$first" class="class1">first</span>-->
+                    <!--<span ng-if="$last" class="class2">last</span>-->
+                <!--</td>-->
+                <!--<td>{{item.name}}</td>-->
+                <!--<td>{{item.value}}</td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!--ng-repeat отображения произвольного куска кода с началом и концом репида-->
+    <!--<p ng-repeat-start="item in items">-->
+        <!--{{$index+1}}-->
+    <!--</p>-->
+    <!--<span>{{item.name}}</span>-->
+    <!--<span>{{item.value}}</span>-->
+    <!--<br ng-repeat-end />-->
+
+</div>
+
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<!--ng-options для селектов-->
+
+<div ng-controller="selectCtrl" >
+    <select name="" id="" ng-model="selected" ng-options="item for item in items"></select>
+</div>
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<!--ng-options для селектов усложненный-->
+
+<div ng-controller="selectBigCtrl" >
+    <select ng-model="selected" ng-options="item.name for item in items track by item.prop"></select>
+
+    <p>{{selected.name}}</p>
+    <p>{{selected.prop}}</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+    <!--Переменные $even и $odd-->
+    <!--Они служат для того чтоб понимать какая итерация репида четная или нет-->
+        <tr ng-repeat="item in items" ng-class="$even ? 'class1' : 'class2' ">
+            <td>{{$index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.value}}</td>
+        </tr>
+    </tbody>
+</table>
