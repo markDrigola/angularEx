@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" ng-app="ngHideApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./angular/angular.js"></script>
+    <script>
+        var app = angular.module("ngHideApp", []);
+
+        app.controller("ngHideCtrl", function ($scope) {
+            $scope.selectedCLass = "green"
+
+            $scope.calssName = [
+                {
+                    displayName: "green",
+                    value: "green"
+                },
+                {
+                    displayName: "red",
+                    value: "red"
+                },
+                {
+                    displayName: "blue",
+                    value: "blue"
+                }
+            ];
+
+            $scope.classNone = true;
+
+            $scope.classNameCLick = function () {
+                if($scope.classNone) {
+                    $scope.className = ["first","second"];
+                    $scope.classNone = false;
+                } else {
+                    $scope.classNone = true;
+                    $scope.classNameNone = [];
+                }
+
+            }
+        });
+
+    </script>
+    <style>
+        .green {
+            background-color: green;
+        }
+
+        .first {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .test-class {
+            height: 30px;
+        }
+    </style>
+
+</head>
+<body ng-controller="ngHideCtrl">
+<!--<div class="row well">-->
+    <!--<div class="radio" ng-repeat="classes in calssName">-->
+        <!--<label>-->
+            <!--<input type="radio" ng-model="$parent.selectedCLass" value="{{classes.value}}" />{{classes.displayName}}-->
+        <!--</label>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="test-class" ng-class="selectedCLass">{{selectedCLass}}-->
+
+<div ng-class="className" ng-if="classNone"></div>
+<!--<div class="first" ng-if="classNone"></div>-->
+<button ng-click="classNameCLick()" >Click</button>
+</div>
+</body>
+</html>

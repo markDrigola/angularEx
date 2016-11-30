@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="switchApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./angular/angular.js"></script>
+    <script src="appSwitch.js"></script>
+
+</head>
+<body ng-controller="switchCtrl">
+    <div class="container">
+        <select ng-model="mode" ng-options="item.display for item in options track by item.value"></select>
+
+        <div ng-switch on="mode.value">
+            <table class="table" ng-switch-when="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tr ng-repeat="item in items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.value}}</td>
+                </tr>
+            </table>
+            <ul class="list-group" ng-switch-when="list">
+                <li class="list-group-item list-group-item-info" ng-repeat="item in items">{{item.name}} {{item.value}}</li>
+            </ul>
+            <ol class="list-group" ng-switch-when="budges">
+                <li class="list-group-item" ng-repeat="item in items">
+                    <span class="badge">
+                        {{item.value}}
+                    </span>
+                    {{item.name}}
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+</body>
+</html>

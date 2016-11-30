@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" ng-app="ngHideApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="./angular/angular.js"></script>
+    <script>
+        var app = angular.module("ngHideApp", []);
+        
+        app.controller("ngHideCtrl", function ($scope) {
+            $scope.hideElem1 = false;
+            $scope.hideElem2 = false;
+            $scope.hideElem3 = false;
+        })
+    </script>
+    <style>
+        #div1 {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+        }
+        #div2 {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+        }
+        #div3 {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+        }
+    </style>
+
+</head>
+<body ng-controller="ngHideCtrl">
+
+<!--ng-show ng-hide-->
+<!--<div class="container">-->
+    <!--<div class="input-menu">-->
+        <!--<input type="checkbox" ng-model="hideElem1">-->
+        <!--<input type="checkbox" ng-model="hideElem2">-->
+        <!--<input type="checkbox" ng-model="hideElem3">-->
+    <!--</div>-->
+    <!--<div id="div1" ng-show="hideElem1"></div>-->
+    <!--<div id="div2" ng-show="hideElem2"></div>-->
+    <!--<div id="div3" ng-show="hideElem3"></div>-->
+<!--</div>-->
+
+
+<!--ng-if-->
+<div class="container">
+    <div class="input-menu">
+        <input type="checkbox" ng-model="hideElem1">
+        <input type="checkbox" ng-model="hideElem2">
+        <input type="checkbox" ng-model="hideElem3">
+    </div>
+    <div id="div1" ng-if="hideElem1"></div>
+    <div id="div2" ng-if="hideElem2"></div>
+    <div id="div3" ng-if="hideElem3"></div>
+</div>
+</body>
+</html>
